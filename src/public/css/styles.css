@@ -1,0 +1,255 @@
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+
+    margin: 0;
+    overflow: hidden;
+  }
+
+  header {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+  }
+
+  .login-section {
+    display: none;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #000;
+    color: #0f0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.5);
+    font-family: 'Courier New', monospace;
+    border: 2px solid #0f0;
+  }
+
+  .register-section {
+    display: none;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #000;
+    color: #0f0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.5);
+    font-family: 'Courier New', monospace;
+    border: 2px solid #0f0;
+  }
+  
+  
+
+  canvas#c {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Asegura que el canvas esté detrás de otros elementos */
+  }
+  
+
+  .container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #000;
+    color: #0f0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.5);
+    font-family: 'Courier New', monospace;
+    border: 2px solid #0f0;
+    overflow: hidden;
+  }
+
+  .lista {
+    max-width: 500px;
+    margin: auto;
+    margin-left: 180px;
+    padding: 20px;
+    background-color: #000;
+    color: #0f0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.5);
+    font-family: 'Courier New', monospace;
+    border: 2px solid #0f0;
+    overflow: hidden;
+  }
+
+  .icon-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
+    height: auto;
+    margin-right: 350px;
+    margin-top: -200px;
+  }  
+
+  .lista2 {
+    padding: 20px;
+    background-color: #000;
+    color: #0f0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.5);
+    font-family: 'Courier New', monospace;
+    border: 2px solid #0f0;
+    overflow: hidden;
+  }
+  
+  .lista h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .lista ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .lista li {
+    padding: 10px;
+    border-bottom: 1px solid #0f0;
+    transition: background-color 0.3s ease;
+  }
+  
+  .lista li:last-child {
+    border-bottom: none;
+  }
+  
+  .lista li:hover {
+    background-color: #00f;
+  }
+
+  a {
+    color: #0f0; /* Cambia el color del texto del enlace */
+    text-decoration: none; /* Elimina el subrayado predeterminado */
+    transition: color 0.3s ease; /* Agrega una transición suave al cambiar el color */
+  }
+  
+
+  .product {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .product img {
+    max-width: 150px;
+    margin-right: 20px;
+  }
+
+  .product-details {
+    flex: 1;
+  }
+
+  .product-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .product-description {
+    margin-bottom: 10px;
+  }
+
+  .product-price {
+    font-size: 18px;
+    color: #ff9900;
+  }
+
+  .buy_button {
+    float: right;
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #000;
+    color: #0f0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.5);
+    font-family: 'Courier New', monospace;
+    border: 2px solid #0f0;
+    overflow: hidden;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+  }
+  
+  .auth-link,
+  .cart-link {
+    padding: 10px;
+    color: #0f0;
+    text-decoration: none;
+    margin-left: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.5);
+    font-family: 'Courier New', monospace;
+  }
+  
+  .auth-link:hover,
+  .cart-link:hover {
+    color: #00f;
+  }
+
+
+
+
+
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    display: none;
+    z-index: 2; /* Colocar el overlay sobre otros elementos */
+  }
+
+  .login-section,
+  .register-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 3; /* Colocar la ventana sobre el overlay */
+  }
+
+  /* Estilos para el menú de hamburguesa */
+  .menu-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 4; /* Colocar el ícono sobre otros elementos */
+  }
+
+  .menu {
+    position: fixed;
+    margin-top: 7%;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    display: none;
+    z-index: 3; /* Colocar el menú sobre otros elementos */
+  }
+
+  .menu a {
+    display: block;
+    color: white;
+    margin-bottom: 10px;
+    text-decoration: none;
+    font-size: 18px;
+  }
