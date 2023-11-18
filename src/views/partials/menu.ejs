@@ -1,0 +1,131 @@
+<div class="header-top">
+    <!-- Botones agrupados en un menú de hamburguesa -->
+    <div class="menu-icon" onclick="toggleMenu()">
+      <div id="menuIcon" style="font-size: 50px;">&#9776;</div>
+    </div>
+    <div class="menu card animated flipInY" id="menu">
+      <a href="#" class="lista2" id="loginLink">Login</a>
+      <a href="#" class="lista2 register-link" id="registerLink">Register</a>
+      <a href="#" class="lista2">Cart</a>
+    </div>
+  </div>
+
+
+  <div class="overlay" id="overlay"></div>
+
+
+  <div class="login-section" id="loginSection">
+    <div class="card animated flipInY bg-dark p-3 border-secondary">
+      <div class="card-header bg-dark text-white text-center">
+        <h3>Login</h3>
+      </div>
+      <div class="card-body">
+        <form action="">
+          <div class="mb-3">
+            <label for="email">Email:</label>
+            <input class="form-control" type="text" placeholder="Email" />
+          </div>
+          <div class="mb-3">
+            <label for="email">Password</label>
+            <input class="form-control" type="text" placeholder="Password" />
+          </div>
+          <button class="btn btn-primary btn-block">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="register-section" id="registerSection">
+    <div class="card animated flipInY bg-dark p-3 border-secondary">
+      <div class="card-header bg-dark text-white text-center">
+        <h3>Register</h3>
+      </div>
+      <div class="card-body">
+        <form id="registrationForm">
+          <div class="mb-3">
+            <label for="email">Email:</label>
+            <input class="form-control" type="text" placeholder="Email" id="email" />
+          </div>
+          <div class="mb-3">
+            <label for="password">New Password</label>
+            <input class="form-control" type="password" placeholder="Password" id="password" />
+          </div>
+          <button class="btn btn-primary btn-block" onclick="registerUser()">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+
+    // REGISTER USER
+
+    function registerUser() {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+  
+      // Realizar la solicitud HTTP para registrar el usuario
+      fetch("/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email, password: password }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log("User registered successfully:", data);
+          // Puedes realizar acciones adicionales después del registro aquí
+        })
+        .catch(error => {
+          console.error("Error during registration:", error);
+        });
+    }
+
+    //MENU 
+    // Función para alternar la visibilidad del menú
+    function toggleMenu() {
+      var menu = document.getElementById("menu");
+      var menuIcon = document.getElementById("menuIcon");
+  
+      if (menu.style.display === "block") {
+        menu.style.display = "none";
+        menuIcon.innerHTML = "&#9776;";  // Cambia a las tres líneas
+      } else {
+        menu.style.display = "block";
+        menuIcon.innerHTML = "&#10005;";  // Cambia a la "X"
+      }
+    }
+  
+      var loginLink = document.getElementById("loginLink");
+      var registerLink = document.getElementById("registerLink");
+      var loginSection = document.getElementById("loginSection");
+      var registerSection = document.getElementById("registerSection");
+      var overlay = document.getElementById("overlay");
+  
+      loginLink.addEventListener("click", function(event) {
+        event.preventDefault();
+        loginSection.style.display = "block";
+        registerSection.style.display = "none";
+        overlay.style.display = "block";
+      });
+  
+      registerLink.addEventListener("click", function(event) {
+        event.preventDefault();
+        registerSection.style.display = "block";
+        loginSection.style.display = "none";
+        overlay.style.display = "block";
+      });
+  
+      document.addEventListener("mousedown", function(event) {
+        // Verificar si el clic está fuera de las secciones de inicio de sesión y registro
+        if (!loginSection.contains(event.target) && !loginLink.contains(event.target) &&
+            !registerSection.contains(event.target) && !registerLink.contains(event.target)) {
+          loginSection.style.display = "none";
+          registerSection.style.display = "none";
+          overlay.style.display = "none";
+        }
+      });
+
+    </script>

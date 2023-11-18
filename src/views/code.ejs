@@ -6,146 +6,11 @@
   <title> K4R0N'S SEC VAULT </title>
   <link rel="stylesheet" href="/css/styles.css">
   <%- include("partials/head") %>
-
-  <style>
-    body {
-      overflow: hidden; /* Evitar el desplazamiento de la página cuando la ventana de inicio de sesión o registro está abierta */
-    }
-  </style>
 </head>
 <body>
   <%- include("partials/navigation") %>
 
-    <div class="header-top">
-      <!-- Botones agrupados en un menú de hamburguesa -->
-      <div class="menu-icon" onclick="toggleMenu()">
-        <div style="font-size: 50px;">&#9776;</div>
-      </div>     
-      <div class="menu card animated flipInY" id="menu">
-        <a href="#" class="lista2" id="loginLink">Login</a>
-        <a href="#" class="lista2 register-link" id="registerLink">Register</a>
-        <a href="#" class="lista2">Cart</a>
-      </div>
-    </div>
-
-
-  <div class="overlay" id="overlay"></div>
-
-  <div class="login-section" id="loginSection">
-    <div class="card animated flipInY bg-dark p-3 border-secondary">
-      <div class="card-header bg-dark text-white text-center">
-        <h3>Login</h3>
-      </div>
-      <div class="card-body">
-        <form action="">
-          <div class="mb-3">
-            <label for="email">Email:</label>
-            <input class="form-control" type="text" placeholder="Email" />
-          </div>
-          <div class="mb-3">
-            <label for="email">Password</label>
-            <input class="form-control" type="text" placeholder="Password" />
-          </div>
-          <button class="btn btn-primary btn-block">Login</button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="register-section" id="registerSection">
-    <div class="card animated flipInY bg-dark p-3 border-secondary">
-      <div class="card-header bg-dark text-white text-center">
-        <h3>Register</h3>
-      </div>
-      <div class="card-body">
-        <form action="">
-          <div class="mb-3">
-            <label for="email">Email:</label>
-            <input class="form-control" type="text" placeholder="Email" />
-          </div>
-          <div class="mb-3">
-            <label for="email">New Password</label>
-            <input class="form-control" type="text" placeholder="Password" />
-          </div>
-          <button class="btn btn-primary btn-block">Register</button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-
-  <script>
-
-        // Función para alternar la visibilidad del menú
-        function toggleMenu() {
-          var menu = document.getElementById("menu");
-          menu.style.display = (menu.style.display === "block") ? "none" : "block";
-        }
-
-    var loginLink = document.getElementById("loginLink");
-    var registerLink = document.getElementById("registerLink");
-    var loginSection = document.getElementById("loginSection");
-    var registerSection = document.getElementById("registerSection");
-    var overlay = document.getElementById("overlay");
-
-    loginLink.addEventListener("click", function(event) {
-      event.preventDefault();
-      loginSection.style.display = "block";
-      registerSection.style.display = "none";
-      overlay.style.display = "block";
-    });
-
-    registerLink.addEventListener("click", function(event) {
-      event.preventDefault();
-      registerSection.style.display = "block";
-      loginSection.style.display = "none";
-      overlay.style.display = "block";
-    });
-
-    document.addEventListener("mousedown", function(event) {
-      // Verificar si el clic está fuera de las secciones de inicio de sesión y registro
-      if (!loginSection.contains(event.target) && !loginLink.contains(event.target) &&
-          !registerSection.contains(event.target) && !registerLink.contains(event.target)) {
-        loginSection.style.display = "none";
-        registerSection.style.display = "none";
-        overlay.style.display = "none";
-      }
-    });
-  </script>
-
-  <!-- Otros scripts o contenido adicional -->
-
-  <canvas id="c"></canvas>
-
-  <script>
-    var c = document.getElementById("c");
-    var ctx = c.getContext("2d");
-    c.height = window.innerHeight;
-    c.width = window.innerWidth;
-    var binary = "01";
-    binary = binary.split("");
-    var font_size = 20;
-    var columns = c.width / font_size;
-    var drops = [];
-    for (var x = 0; x < columns; x++)
-      drops[x] = 1;
-
-    function draw() {
-      ctx.fillStyle = "rgba(0,0,0,0.05)";
-      ctx.fillRect(0, 0, c.width, c.height);
-      ctx.fillStyle = "green";
-      ctx.font = font_size + "px arial";
-      for (var i = 0; i < drops.length; i++) {
-        var text = binary[Math.floor(Math.random() * binary.length)];
-        ctx.fillText(text, i * font_size, drops[i] * font_size);
-        if (drops[i] * font_size > c.height && Math.random() > 0.975)
-          drops[i] = 0;
-        drops[i]++;
-      }
-    }
-
-    setInterval(draw, 120);
-  </script>
+  <%- include("partials/menu") %>
 
   <div class="container">
     <div class="product">
@@ -159,6 +24,9 @@
     <button class="buy_button">Ver Scripts</button>
   </div>
   <canvas id="c"></canvas>
+
+  <%- include("partials/fondo") %>
+
   <%- include("partials/footer") %>
 </body>
 </html>
